@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Stoa Code — Transformamos ideias em soluções reais, sustentáveis e duradouras. Desenvolvimento de software com propósito." />
+  <meta name="keywords" content="desenvolvimento web, aplicativos, sistemas, front-end, arquitetura de software, inteligência artificial, Stoa Code" />
+  <meta name="author" content="Stoa Code" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Stoa Code — Tecnologia com Propósito" />
+  <meta property="og:description" content="Transformamos ideias em soluções reais, sustentáveis e duradouras." />
+  <meta property="og:url" content="https://stoacode.com.br" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Stoa Code — Tecnologia com Propósito" />
+  <meta name="twitter:description" content="Transformamos ideias em soluções reais, sustentáveis e duradouras." />
+
+  <title>Stoa Code — Tecnologia com Propósito</title>
+  <link rel="canonical" href="https://stoacode.com.br" />
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            stoa: {
+              bg:        '#11081D',   /* Primária — base/background escuro   */
+              surface:   '#160A22',   /* Surface — cards e sections           */
+              accent:    '#7552A2',   /* Secundária — roxo da marca           */
+              'accent-lt':'#8464A8', /* Terciária — lavanda/roxo claro       */
+              border:    '#2D1847',   /* Borda derivada do roxo               */
+              text:      '#FBFAFB',   /* Branco do lettering                  */
+              dim:       '#9B8AAF',   /* Texto secundário — roxo atenuado     */
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Stoa Code",
+    "description": "Desenvolvimento de software com propósito. Transformamos ideias em soluções reais, sustentáveis e duradouras.",
+    "url": "https://stoacode.com.br",
+    "email": "contato@paulosilva.com.br",
+    "sameAs": ["https://linkedin.com/company/stoa-code"],
+    "serviceArea": "Brasil"
+  }
+  </script>
+
+  <style>
+    /* ── Cores base ──────────────────────────────────── */
+    :root {
+      --bg:        #11081D;
+      --surface:   #160A22;
+      --accent:    #7552A2;
+      --accent-lt: #8464A8;
+      --border:    #2D1847;
+      --text:      #FBFAFB;
+      --dim:       #9B8AAF;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    /* Gradient roxo da marca (Secundária → Terciária) */
+    .gradient-text {
+      background: linear-gradient(135deg, #7552A2 0%, #8464A8 60%, #7552A2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Glow suave no hero usando o roxo da marca */
+    .hero-glow {
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(117,82,162,0.12) 0%, transparent 70%);
+    }
+
+    .card-hover {
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-3px);
+      border-color: rgba(117,82,162,0.5);
+      box-shadow: 0 8px 32px rgba(117,82,162,0.1);
+    }
+
+    /* Grid decorativo com o roxo em opacidade mínima */
+    .grid-pattern {
+      background-image:
+        linear-gradient(rgba(117,82,162,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(117,82,162,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* Focus ring usando o roxo da marca */
+    :focus-visible {
+      outline: 2px solid #7552A2;
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* Divisor com gradiente roxo */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(117,82,162,0.35), transparent);
+    }
+  </style>
+</head>
+
+<body class="font-sans antialiased">
+
+  <!-- Skip to main content (accessibility) -->
+  <a
+    href="#main-content"
+    class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:rounded-md focus:text-sm focus:font-semibold"
+    style="background-color:#7552A2; color:#FBFAFB;"
+  >
+    Pular para o conteúdo principal
+  </a>
+
+  <!-- ===================== HEADER / NAV ===================== -->
+  <header
+    role="banner"
+    class="fixed top-0 inset-x-0 z-40 border-b"
+    style="background-color:rgba(17,8,29,0.88); backdrop-filter:blur(14px); border-color:rgba(45,24,71,0.8);"
+  >
+    <nav
+      role="navigation"
+      aria-label="Navegação principal"
+      class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
+    >
+      <div class="flex items-center justify-between h-20">
+
+        <!-- Logo: "Stoa" em branco (#FBFAFB), "Code" em gradiente roxo -->
+        <a href="#" aria-label="Stoa Code — Voltar ao início" class="flex items-center">
+          <!-- <span class="text-xl font-extrabold tracking-tight select-none">
+            <span style="color:#FBFAFB;">Stoa</span><span class="gradient-text">Code</span>
+          </span> -->
+          <img src="public/stoa_code_240x240.webp" alt="Logotipo da Stoa Code" class="h-20 w-20 ml-2" />
+        </a>
+
+        <!-- Desktop links -->
+        <div class="hidden md:flex items-center gap-1">
+          <a href="#sobre"    class="px-3 py-2 rounded-md text-sm transition-colors duration-150" style="color:#9B8AAF;" onmouseover="this.style.color='#8464A8'" onmouseout="this.style.color='#9B8AAF'">Sobre</a>
+          <a href="#servicos" class="px-3 py-2 rounded-md text-sm transition-colors duration-150" style="color:#9B8AAF;" onmouseover="this.style.color='#8464A8'" onmouseout="this.style.color='#9B8AAF'">Serviços</a>
+          <a href="#modelos"  class="px-3 py-2 rounded-md text-sm transition-colors duration-150" style="color:#9B8AAF;" onmouseover="this.style.color='#8464A8'" onmouseout="this.style.color='#9B8AAF'">Modelos</a>
+          <a href="#clientes" class="px-3 py-2 rounded-md text-sm transition-colors duration-150" style="color:#9B8AAF;" onmouseover="this.style.color='#8464A8'" onmouseout="this.style.color='#9B8AAF'">Clientes</a>
+          <!-- Botão CTA: fundo roxo secundário, texto branco -->
+          <a
+            href="#contato"
+            class="ml-2 px-4 py-2 rounded-md text-sm font-semibold transition-all duration-150"
+            style="background-color:#7552A2; color:#FBFAFB;"
+            onmouseover="this.style.backgroundColor='#8464A8'"
+            onmouseout="this.style.backgroundColor='#7552A2'"
+          >
+            Contato
+          </a>
+        </div>
+
+        <!-- Mobile menu toggle -->
+        <button
+          id="mobile-menu-btn"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Abrir menu de navegação"
+          class="md:hidden p-2 rounded-md transition-colors"
+          style="color:#9B8AAF;"
+        >
+          <svg id="icon-open"  xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4" role="menu">
+        <div class="flex flex-col gap-1 pt-2 border-t" style="border-color:#2D1847;">
+          <a href="#sobre"    role="menuitem" class="py-2 px-1 text-sm" style="color:#9B8AAF;">Sobre</a>
+          <a href="#servicos" role="menuitem" class="py-2 px-1 text-sm" style="color:#9B8AAF;">Serviços</a>
+          <a href="#modelos"  role="menuitem" class="py-2 px-1 text-sm" style="color:#9B8AAF;">Modelos</a>
+          <a href="#clientes" role="menuitem" class="py-2 px-1 text-sm" style="color:#9B8AAF;">Clientes</a>
+          <a href="#contato"  role="menuitem" class="py-2 px-1 text-sm font-semibold" style="color:#8464A8;">Contato</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===================== MAIN ===================== -->
+  <main id="main-content" role="main">
+
+    <!-- ── HERO ─────────────────────────────────────── -->
+    <section
+      class="relative min-h-screen flex items-center justify-center overflow-hidden grid-pattern hero-glow"
+      aria-labelledby="hero-heading"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-36 text-center relative z-10">
+
+        <!-- Badge: terciária (lavanda) como borda e texto -->
+        <p
+          class="inline-block text-xs font-bold tracking-[0.2em] uppercase mb-6 px-3 py-1 rounded-full border"
+          style="color:#8464A8; border-color:rgba(132,100,168,0.3); background-color:rgba(117,82,162,0.08);"
+        >
+          Tecnologia com Propósito
+        </p>
+
+        <!-- H1: texto branco, gradiente roxo no trecho de destaque -->
+        <h1
+          id="hero-heading"
+          class="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6"
+          style="color:#FBFAFB;"
+        >
+          A Stoa é o fundamento.<br />
+          <span class="gradient-text">O Code é o caminho.</span>
+        </h1>
+
+        <p class="max-w-2xl mx-auto text-lg leading-relaxed mb-10" style="color:#9B8AAF;">
+          Antes de escrever uma linha de código, existe um princípio: entender profundamente o problema.
+          Tecnologia guiada por pensamento é transformação.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <!-- CTA primário: fundo roxo secundário, texto branco -->
+          <a
+            href="#servicos"
+            class="inline-flex items-center gap-2 px-7 py-3.5 rounded-md font-semibold text-sm transition-all duration-150 hover:opacity-90 hover:-translate-y-0.5"
+            style="background-color:#7552A2; color:#FBFAFB;"
+          >
+            Ver Serviços
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          </a>
+          <!-- CTA secundário: borda da paleta, texto branco -->
+          <a
+            href="#contato"
+            class="inline-flex items-center gap-2 px-7 py-3.5 rounded-md font-semibold text-sm border transition-all duration-150 hover:-translate-y-0.5"
+            style="color:#FBFAFB; border-color:#2D1847;"
+            onmouseover="this.style.borderColor='rgba(117,82,162,0.6)'"
+            onmouseout="this.style.borderColor='#2D1847'"
+          >
+            Fale Conosco
+          </a>
+        </div>
+      </div>
+
+      <!-- Divisor inferior -->
+      <div class="absolute bottom-0 inset-x-0 section-divider"></div>
+    </section>
+
+    <!-- ── SOBRE ──────────────────────────────────────── -->
+    <section
+      id="sobre"
+      aria-labelledby="sobre-heading"
+      class="py-24 lg:py-32"
+      style="background-color:#160A22;"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+          <!-- Texto -->
+          <div>
+            <!-- Label de seção: terciária (lavanda) -->
+            <p class="text-xs font-bold tracking-[0.2em] uppercase mb-3" style="color:#8464A8;">Sobre</p>
+            <h2 id="sobre-heading" class="text-3xl sm:text-4xl font-bold leading-tight mb-6" style="color:#FBFAFB;">
+              Entender o problema é a<br />
+              <span class="gradient-text">primeira linha de código</span>
+            </h2>
+            <div class="space-y-4 text-base leading-relaxed" style="color:#9B8AAF;">
+              <p>
+                A Stoa Code nasceu com o espírito de que, antes de escrever uma linha de código, existe um princípio:
+                <strong style="color:#FBFAFB; font-weight:500;">entender profundamente o problema</strong>.
+                Porque tecnologia sem entendimento é só ferramenta. Mas tecnologia guiada por pensamento é transformação.
+              </p>
+              <p>
+                Nossa missão é usar a tecnologia como meio para transformar ideias em soluções reais, sustentáveis e duradouras.
+                Não apenas desenvolver software — mas pensar, estruturar, planejar, construir e evoluir soluções que acompanhem o
+                crescimento de quem confia no nosso trabalho.
+              </p>
+              <p>
+                Com o avanço da inteligência artificial, nossa missão é fazer sua ideia conquistar espaço no mercado.
+                Cada projeto é tratado como um processo de construção consciente. Cada decisão tem um propósito.
+                Cada linha de código é consequência de um raciocínio claro.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pilares de valor: cards sobre surface com borda da paleta -->
+          <div class="grid grid-cols-2 gap-4" aria-hidden="true">
+            <div class="col-span-2 rounded-xl p-6 border" style="background-color:#11081D; border-color:#2D1847;">
+              <div class="text-2xl font-extrabold gradient-text mb-1">Propósito</div>
+              <div class="text-sm" style="color:#9B8AAF;">cada decisão tem razão de ser</div>
+            </div>
+            <div class="rounded-xl p-6 border" style="background-color:#11081D; border-color:#2D1847;">
+              <div class="text-2xl font-extrabold gradient-text mb-1">Clareza</div>
+              <div class="text-sm" style="color:#9B8AAF;">pensamento antes de código</div>
+            </div>
+            <div class="rounded-xl p-6 border" style="background-color:#11081D; border-color:#2D1847;">
+              <div class="text-2xl font-extrabold gradient-text mb-1">Evolução</div>
+              <div class="text-sm" style="color:#9B8AAF;">soluções que crescem com você</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" style="background-color:#160A22;"></div>
+
+    <!-- ── SERVIÇOS ──────────────────────────────────── -->
+    <section
+      id="servicos"
+      aria-labelledby="servicos-heading"
+      class="py-24 lg:py-32"
+      style="background-color:#11081D;"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-16">
+          <p class="text-xs font-bold tracking-[0.2em] uppercase mb-3" style="color:#8464A8;">Serviços</p>
+          <h2 id="servicos-heading" class="text-3xl sm:text-4xl font-bold" style="color:#FBFAFB;">O que fazemos</h2>
+        </div>
+
+        <!-- Cards: surface (#160A22), borda (#2D1847), ícone roxo secundário -->
+        <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" role="list">
+
+          <li class="card-hover rounded-xl p-6 border" style="background-color:#160A22; border-color:#2D1847;">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5" style="background-color:rgba(117,82,162,0.15);">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" style="color:#7552A2;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            </div>
+            <h3 class="font-semibold mb-2" style="color:#FBFAFB;">Desenvolvimento Web &amp; Apps</h3>
+            <p class="text-sm leading-relaxed" style="color:#9B8AAF;">Criação de aplicativos e sistemas web completos, do conceito à entrega em produção.</p>
+          </li>
+
+          <li class="card-hover rounded-xl p-6 border" style="background-color:#160A22; border-color:#2D1847;">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5" style="background-color:rgba(117,82,162,0.15);">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" style="color:#7552A2;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm0 8a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zm12 0a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
+            </div>
+            <h3 class="font-semibold mb-2" style="color:#FBFAFB;">Front-end a partir de Layouts</h3>
+            <p class="text-sm leading-relaxed" style="color:#9B8AAF;">Desenvolvemos o front-end com base em layouts pré-definidos, pronto para integrar com suas APIs.</p>
+          </li>
+
+          <li class="card-hover rounded-xl p-6 border" style="background-color:#160A22; border-color:#2D1847;">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5" style="background-color:rgba(117,82,162,0.15);">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" style="color:#7552A2;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            </div>
+            <h3 class="font-semibold mb-2" style="color:#FBFAFB;">Manutenção de Sistemas</h3>
+            <p class="text-sm leading-relaxed" style="color:#9B8AAF;">Manutenção e evolução de códigos e sistemas existentes com qualidade e segurança.</p>
+          </li>
+
+          <li class="card-hover rounded-xl p-6 border" style="background-color:#160A22; border-color:#2D1847;">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5" style="background-color:rgba(117,82,162,0.15);">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" style="color:#7552A2;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+            </div>
+            <h3 class="font-semibold mb-2" style="color:#FBFAFB;">Arquitetura de Projetos</h3>
+            <p class="text-sm leading-relaxed" style="color:#9B8AAF;">Planejamento e criação de arquitetura sólida para o seu projeto crescer com consistência.</p>
+          </li>
+
+          <li class="card-hover rounded-xl p-6 border sm:col-span-2 lg:col-span-1" style="background-color:#160A22; border-color:#2D1847;">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5" style="background-color:rgba(117,82,162,0.15);">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" style="color:#7552A2;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+            </div>
+            <h3 class="font-semibold mb-2" style="color:#FBFAFB;">Implementação de IA</h3>
+            <p class="text-sm leading-relaxed" style="color:#9B8AAF;">Implementação e personalização de ferramentas de inteligência artificial para o seu negócio.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ── MODELOS DE TRABALHO ────────────────────────── -->
+    <section
+      id="modelos"
+      aria-labelledby="modelos-heading"
+      class="py-24 lg:py-32"
+      style="background-color:#160A22;"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-16">
+          <p class="text-xs font-bold tracking-[0.2em] uppercase mb-3" style="color:#8464A8;">Flexibilidade</p>
+          <h2 id="modelos-heading" class="text-3xl sm:text-4xl font-bold" style="color:#FBFAFB;">Modelos de Trabalho</h2>
+          <p class="mt-4 max-w-xl mx-auto text-base" style="color:#9B8AAF;">
+            Adaptamos nossa forma de trabalhar às necessidades do seu projeto e da sua equipe.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-6">
+
+          <!-- Híbrido -->
+          <div class="card-hover text-center rounded-xl p-8 border" style="background-color:#11081D; border-color:#2D1847;">
+            <div
+              class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5 border"
+              style="background:rgba(117,82,162,0.1); border-color:rgba(117,82,162,0.25);"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" style="color:#7552A2;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            </div>
+            <h3 class="text-base font-semibold mb-2" style="color:#FBFAFB;">Híbrido</h3>
+            <p class="text-sm" style="color:#9B8AAF;">Combinamos presencial e remoto conforme a demanda do projeto.</p>
+          </div>
+
+          <!-- Alocação no Cliente (destaque com borda secundária mais visível) -->
+          <div class="card-hover text-center rounded-xl p-8 border" style="background-color:#11081D; border-color:rgba(117,82,162,0.5);">
+            <div
+              class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5 border"
+              style="background:rgba(117,82,162,0.15); border-color:rgba(117,82,162,0.4);"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" style="color:#7552A2;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            </div>
+            <h3 class="text-base font-semibold mb-2" style="color:#FBFAFB;">Alocação no Cliente</h3>
+            <p class="text-sm" style="color:#9B8AAF;">100% dedicado às operações e rotinas dentro da sua empresa.</p>
+          </div>
+
+          <!-- Remoto -->
+          <div class="card-hover text-center rounded-xl p-8 border" style="background-color:#11081D; border-color:#2D1847;">
+            <div
+              class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5 border"
+              style="background:rgba(117,82,162,0.1); border-color:rgba(117,82,162,0.25);"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" style="color:#7552A2;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="text-base font-semibold mb-2" style="color:#FBFAFB;">100% Remoto</h3>
+            <p class="text-sm" style="color:#9B8AAF;">Entregamos resultados de qualquer lugar, com total flexibilidade geográfica.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" style="background-color:#160A22;"></div>
+
+    <!-- ── CLIENTES ───────────────────────────────────── -->
+    <section
+      id="clientes"
+      aria-labelledby="clientes-heading"
+      class="py-24 lg:py-32"
+      style="background-color:#11081D;"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-16">
+          <p class="text-xs font-bold tracking-[0.2em] uppercase mb-3" style="color:#8464A8;">Confiança</p>
+          <h2 id="clientes-heading" class="text-3xl sm:text-4xl font-bold" style="color:#FBFAFB;">Clientes que já atendemos</h2>
+          <p class="mt-4 max-w-xl mx-auto text-base" style="color:#9B8AAF;">
+            Empresas que confiaram no nosso processo para transformar suas ideias em realidade.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-5">
+
+          <article
+            class="card-hover flex items-center gap-4 rounded-xl px-8 py-6 border"
+            style="background-color:#160A22; border-color:#2D1847; min-width:240px;"
+          >
+            <!-- Inicial com fundo roxo atenuado, letra em roxo secundário -->
+            <div
+              class="w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0 font-bold text-base"
+              style="background-color:rgba(117,82,162,0.15); color:#7552A2;"
+              aria-hidden="true"
+            >
+            <img src="public/aps.webp" alt="Logo da Apassos Consultoria" class="h-full w-full rounded-lg" />
+          </div>
+
+            <div>
+              <h3 class="font-semibold text-sm" style="color:#FBFAFB;">Apassos Consultoria</h3>
+              <p class="text-xs mt-0.5" style="color:#9B8AAF;">Consultoria SAP</p>
+            </div>
+          </article>
+
+          <article
+            class="card-hover flex items-center gap-4 rounded-xl px-8 py-6 border"
+            style="background-color:#160A22; border-color:#2D1847; min-width:240px;"
+          >
+            <div
+              class="w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0 font-bold text-base"
+              style="background-color:rgba(117,82,162,0.15); color:#7552A2;"
+              aria-hidden="true"
+            >
+            <img src="public/kmv.webp" alt="Logo da KM de Vantagens" class="h-full w-full rounded-lg" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-sm" style="color:#FBFAFB;">KM de Vantagens</h3>
+              <p class="text-xs mt-0.5" style="color:#9B8AAF;">Fidelidade &amp; Benefícios</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ── CONTATO ────────────────────────────────────── -->
+    <section
+      id="contato"
+      aria-labelledby="contato-heading"
+      class="py-24 lg:py-32"
+      style="background-color:#160A22;"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mx-auto text-center">
+
+          <p class="text-xs font-bold tracking-[0.2em] uppercase mb-3" style="color:#8464A8;">Contato</p>
+          <h2 id="contato-heading" class="text-3xl sm:text-4xl font-bold mb-4" style="color:#FBFAFB;">
+            Vamos construir algo juntos?
+          </h2>
+          <p class="leading-relaxed mb-12" style="color:#9B8AAF;">
+            Tem um projeto em mente ou quer entender como podemos ajudar?
+            Entre em contato, estamos prontos para ouvir e pensar junto com você.
+          </p>
+          <div class="flex flex-col sm:flex-row items-stretch justify-center gap-4">
+            <a
+              href="mailto:contato@paulosilva.com.br"
+              aria-label="Enviar email para contato@paulosilva.com.br"
+              class="group inline-flex items-center gap-4 px-6 py-5 rounded-xl border transition-all duration-150 w-full sm:w-auto justify-center"
+              style="background-color:#11081D; border-color:#2D1847;"
+              onmouseover="this.style.borderColor='rgba(117,82,162,0.55)'"
+              onmouseout="this.style.borderColor='#2D1847'"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" style="color:#7552A2;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </a>
+            <a
+              href="https://linkedin.com/company/stoa-code"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Perfil da Stoa Code no LinkedIn (abre em nova aba)"
+              class="group inline-flex items-center gap-4 px-6 py-5 rounded-xl border transition-all duration-150 w-full sm:w-auto justify-center"
+              style="background-color:#11081D; border-color:#2D1847;"
+              onmouseover="this.style.borderColor='rgba(117,82,162,0.55)'"
+              onmouseout="this.style.borderColor='#2D1847'"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="color:#7552A2;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+
+            <!-- WhatsApp -->
+            <a
+              href="https://wa.me/5511988305090"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Entrar em contato pelo WhatsApp (abre em nova aba)"
+              class="group inline-flex items-center gap-4 px-6 py-5 rounded-xl border transition-all duration-150 w-full sm:w-auto justify-center"
+              style="background-color:#11081D; border-color:#2D1847;"
+              onmouseover="this.style.borderColor='rgba(117,82,162,0.55)'"
+              onmouseout="this.style.borderColor='#2D1847'"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="color:#7552A2;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer
+    role="contentinfo"
+    class="border-t py-8"
+    style="background-color:#11081D; border-color:#2D1847;"
+  >
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <p class="text-sm text-center" style="color:#9B8AAF;">
+          &copy; <span id="current-year"></span> Stoa Code. Todos os direitos reservados.
+        </p>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    const btn       = document.getElementById('mobile-menu-btn');
+    const menu      = document.getElementById('mobile-menu');
+    const iconOpen  = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+
+    btn.addEventListener('click', () => {
+      const isHidden = menu.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', String(!isHidden));
+      iconOpen.classList.toggle('hidden',  !isHidden);
+      iconClose.classList.toggle('hidden', isHidden);
+    });
+
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      });
+    });
+  </script>
+
+</body>
+</html>
